@@ -11,10 +11,7 @@ setTimeout(function(){
 
 setTimeout(function(){
     $("[name^=rates_]").click();
-   
+    $("[name^=room_]").click();
+
 },6000);
 
-setTimeout(function(){
-    
-    $("[name^=room_]").click();
-},7000);
