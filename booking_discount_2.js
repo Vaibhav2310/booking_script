@@ -11,7 +11,8 @@ setTimeout(function(){
 
 setTimeout(function(){
     $("[name^=rates_]").click();
-    $("[name^=room_]").click();
+    
+    $("[name^=room_]").prop('checked', true);
 
 },6000);
 
