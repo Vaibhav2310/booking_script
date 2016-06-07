@@ -9,6 +9,6 @@ setTimeout(function(){
 },5000);
 
 setTimeout(function(){
-    document.getElementsByClassName('bs--display-ib')[0].value = "28";
+    document.getElementsByClassName('bs--display-ib')[4].value = "28";
     window.Backbone.$('input').change();
 },7000);
