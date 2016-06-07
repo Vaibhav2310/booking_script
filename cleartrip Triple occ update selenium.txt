@@ -1,0 +1,111 @@
+cleartrip update TO
+
+package abc;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+public class def {
+	
+	
+
+	public static void main(String[] args) {
+		
+		
+		String filepath  = "D:\\CT_POL.xls";
+		FileInputStream file = null;
+		try
+		{
+			file =new FileInputStream(filepath);
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		Workbook wb = null;
+		try
+		{
+			wb = Workbook.getWorkbook(file);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		catch (BiffException e) 
+		{
+			e.printStackTrace();
+		}
+		Sheet sh = wb.getSheet("Sheet1");
+		int totalrows = sh.getRows();
+		int totalcols = sh.getColumns();
+		String abc = null;
+		
+		//int lok;
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.navigate().to("http://www.cleartrip.com/chmm/signin?service=http%3A%2F%2Fwww.cleartrip.com%2Fchmm%2F");
+		driver.manage().window().maximize();
+		driver.findElement(By.id("email")).sendKeys("south.ct@oyorooms.com");
+		driver.findElement(By.id("password")).sendKeys("cleartripoyo");
+		driver.findElement(By.xpath("/html/body/div[1]/form/dl/dd[4]/input")).click();
+		
+		for(int row=0;row<totalrows;row++)
+		{
+			
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.findElement(By.className("Rates")).click();
+		abc = (sh.getCell(0,row).getContents());
+		new Select(driver.findElement(By.id("hotelName"))).selectByVisibleText("abc");
+		new Select(driver.findElement(By.id("room_type"))).selectByVisibleText("Standard Room - Active");
+		new Select(driver.findElement(By.id("selRateName"))).selectByVisibleText("Standard Room - Active");
+		driver.findElement(By.name("submitButton")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(By.className("arrow")).click();
+		
+		//abc = (sh.getCell(0,row).getContents());
+		//driver.navigate().to(abc);
+		//driver.navigate().to("http://www.cleartrip.com/chmm/managerate?rateId=147764");
+		driver.findElement(By.id("tab_2")).click();
+		new Select(driver.findElement(By.id("maximum_adults_0"))).selectByVisibleText("2");
+		//driver.findElement(By.name("maximum_adults_0")).sendKeys("0.2");
+		driver.findElement(By.id("add_rate")).submit();
+		
+		// TODO Auto-generated method stub
+		
+		
+
+		}
+
+}
+}
+
