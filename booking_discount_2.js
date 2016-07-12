@@ -2,7 +2,7 @@
 
 setTimeout(function(){
     document.getElementsByClassName('rate-name__input')[0].value = "Flat 20% Off";
-    document.getElementsByName('is_secret_deal')[0].click();
+    //document.getElementsByName('is_secret_deal')[0].click();
     document.getElementsByClassName('bs--display-ib')[4].value = "20";
      window.Backbone.$('input').change();
     
