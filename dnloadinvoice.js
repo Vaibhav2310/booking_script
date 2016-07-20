@@ -1,5 +1,5 @@
 setTimeout(function(){
 
-	$("[id^=pdfPath_0_]").click();
+	$("[id^=pdfPath_0_]")[0].click();
 
-},7000);
+},5000);
